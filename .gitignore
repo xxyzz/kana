@@ -1,0 +1,12 @@
+# emacs files
+*~
+.\#*
+\#*\#
+
+# python env
+.venv
+
+# python
+__pycache__
+
+_site
