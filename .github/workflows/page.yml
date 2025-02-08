@@ -19,9 +19,9 @@ jobs:
         with:
           python-version: '3.13'
       - run: |
-          python -m pip install -U pip Jinja2
+          python -m pip install -U pip Jinja2 genanki
           python kana.py
-          mv HengShanMaoBiCaoShu-2.ttf _site
+          mv fonts/* *.apkg *.ogg *.oga _site
       - uses: actions/upload-pages-artifact@v3
         if: github.ref_name == 'master'
 

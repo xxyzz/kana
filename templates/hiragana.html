@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <title>Hiragana</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
     <style>
       @font-face {
         font-family: "hengshancaoshu";
-        src: url("./HengShanMaoBiCaoShu-2.ttf");
+        src: url("./_HengShanMaoBiCaoShu-2.ttf");
+      }
+      @font-face {
+        font-family: "Klee One";
+        src: url("./_KleeOne-Regular.ttf");
       }
 
       table {
@@ -50,7 +51,7 @@
 	  <th>{{ row.th }}</th>
 	  {% for td in row.td_list %}
 	  {% if td.chinese != "" %}
-	  <td{% if td.colspan != "" %} colspan="{{ td.colspan }}" {% endif %}>
+	  <td>
 	    <a href="https://en.wiktionary.org/wiki/{{ td.chinese }}#Japanese">
 	      <span lang="ja">{{ td.chinese }}</span>
 	    </a>
@@ -60,7 +61,7 @@
 	    </a>
 	    {% if td.audio != "" %}
 	    <br/>
-	    <audio controls src="https://commons.wikimedia.org/wiki/Special:FilePath/{{ td.audio }}"></audio>
+	    <audio controls src="./{{ td.audio }}"></audio>
 	    {% endif %}
 	  </td>
 	  {% else %}
@@ -72,6 +73,9 @@
       </tbody>
     </table>
     <ul>
+      <li>
+	<a href="./hiragana.apkg">Anki deck</a>
+      </li>
       <li>
 	<a href="https://en.wikipedia.org/wiki/Hiragana">Hiragana - Wikipedia</a>
       </li>

@@ -10,3 +10,6 @@
 __pycache__
 
 _site
+*.apkg
+*.ogg
+*.oga
