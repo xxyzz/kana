@@ -88,7 +88,6 @@ span[lang="zh"] {
                     subprocess.run(
                         [
                             "wget",
-                            "-nv",
                             f"https://commons.wikimedia.org/wiki/Special:FilePath/{td.audio}",
                         ],
                         check=True,
