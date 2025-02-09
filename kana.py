@@ -12,6 +12,7 @@ class Td:
     hiragana: str = ""
     audio: str = ""
     romanization: str = ""
+    stroke_order: str = ""
 
 
 @dataclass
@@ -29,12 +30,13 @@ def create_anki_deck(rows: list[Row]) -> None:
             {"name": "Hiragana"},
             {"name": "audio"},
             {"name": "romanization"},
+            {"name": "stroke_order"},
         ],
         templates=[
             {
                 "name": "Hiragana",
                 "qfmt": '<span lang="ja">{{Hiragana}}</span>',
-                "afmt": '{{FrontSide}}<p><span lang="ja">{{Chinese}}</span> <span lang="zh">{{Chinese}}</span></p><p>{{romanization}}</p>{{audio}}',
+                "afmt": '{{FrontSide}}<p><span lang="ja">{{Chinese}}</span> <span lang="zh">{{Chinese}}</span></p><p>{{romanization}}</p><p>{{audio}}</p><p>{{stroke_order}}</p>',
             }
         ],
         css="""
@@ -51,6 +53,10 @@ def create_anki_deck(rows: list[Row]) -> None:
 .card {
   font-size: xxx-large;
   text-align: center;
+}
+
+p {
+  margin: auto;
 }
 
 span[lang="ja"] {
@@ -77,24 +83,13 @@ span[lang="zh"] {
                 fields=[
                     td.chinese,
                     td.hiragana,
-                    f"[sound:{td.audio}]" if td.audio != "" else "",
+                    f"[sound:sounds/{td.audio}]" if td.audio != "" else "",
                     td.romanization,
+                    f'<img src="images/{td.stroke_order}">' if td.stroke_order != "" else "",
                 ],
             )
             deck.add_note(note)
-            if td.audio != "":
-                audio_path = Path(td.audio)
-                if not audio_path.is_file():
-                    subprocess.run(
-                        [
-                            "wget",
-                            f"https://commons.wikimedia.org/wiki/Special:FilePath/{td.audio}",
-                        ],
-                        check=True,
-                        capture_output=True,
-                        text=True,
-                    )
-                package.media_files.append(td.audio)
+
     package.media_files.extend(
         ["fonts/_HengShanMaoBiCaoShu-2.ttf", "fonts/_KleeOne-Regular.ttf"]
     )
@@ -116,101 +111,101 @@ if __name__ == "__main__":
             Row(
                 "",
                 [
-                    Td("安", "あ", "Ja-A.oga", "a"),
-                    Td("以", "い", romanization="i"),
-                    Td("宇", "う", "Ja-U.oga", "u"),
-                    Td("衣", "え", "Ja-E.oga", "e"),
-                    Td("於", "お", "Ja-O.oga", "o"),
+                    Td("安", "あ", "Ja-A.oga", "a", "あ-bw.svg"),
+                    Td("以", "い", "", "i", "い-bw.svg"),
+                    Td("宇", "う", "Ja-U.oga", "u", "う-bw.svg"),
+                    Td("衣", "え", "Ja-E.oga", "e", "え-bw.svg"),
+                    Td("於", "お", "Ja-O.oga", "o", "お-bw.svg"),
                 ],
             ),
             Row(
                 "k",
                 [
-                    Td("加", "か", "Ja-ka.ogg", "ka"),
-                    Td("幾", "き", romanization="ki"),
-                    Td("久", "く", romanization="ku"),
-                    Td("計", "け", romanization="ke"),
-                    Td("己", "こ", romanization="ko"),
+                    Td("加", "か", "Ja-ka.ogg", "ka", "か-bw.svg"),
+                    Td("幾", "き", "", "ki", "き-bw.svg"),
+                    Td("久", "く", "", "ku", "く-bw.svg"),
+                    Td("計", "け", "", "ke", "け-bw.svg"),
+                    Td("己", "こ", "", "ko", "こ-bw.svg"),
                 ],
             ),
             Row(
                 "s",
                 [
-                    Td("左", "さ", romanization="sa"),
-                    Td("之", "し", "Ja-Shi.oga", "shi"),
-                    Td("寸", "す", romanization="su"),
-                    Td("世", "せ", romanization="se"),
-                    Td("曽", "そ", romanization="so"),
+                    Td("左", "さ", "", "sa", "さ-bw.png"),
+                    Td("之", "し", "Ja-Shi.oga", "shi", "し-bw.png"),
+                    Td("寸", "す", "", "su", "す-bw.png"),
+                    Td("世", "せ", "", "se", "せ-bw.png"),
+                    Td("曽", "そ", "", "so", "そ-bw.png"),
                 ],
             ),
             Row(
                 "t",
                 [
-                    Td("太", "た", romanization="ta"),
-                    Td("知", "ち", "Ja-Chi_2.oga", "chi"),
-                    Td("川", "つ", "Ja-Tsu.oga", "tsu"),
-                    Td("天", "て", romanization="te"),
-                    Td("止", "と", romanization="to"),
+                    Td("太", "た", "", "ta", "た-bw.png"),
+                    Td("知", "ち", "Ja-Chi_2.oga", "chi", "ち-bw.png"),
+                    Td("川", "つ", "Ja-Tsu.oga", "tsu", "つ-bw.png"),
+                    Td("天", "て", "", "te", "て-bw.png"),
+                    Td("止", "と", "", "to", "と-bw.png"),
                 ],
             ),
             Row(
                 "n",
                 [
-                    Td("奈", "な", romanization="na"),
-                    Td("仁", "に", "Ja-2-ni.ogg", "ni"),
-                    Td("奴", "ぬ", romanization="nu"),
-                    Td("祢", "ね", romanization="ne"),
-                    Td("乃", "の", romanization="no"),
+                    Td("奈", "な", "", "na", "な-bw.png"),
+                    Td("仁", "に", "Ja-2-ni.ogg", "ni", "に-bw.png"),
+                    Td("奴", "ぬ", "", "nu", "ぬ-bw.png"),
+                    Td("祢", "ね", "", "ne", "ね-bw.png"),
+                    Td("乃", "の", "", "no", "の-bw.png"),
                 ],
             ),
             Row(
                 "h",
                 [
-                    Td("波", "は", romanization="ha"),
-                    Td("比", "ひ", "Ja-Hi.oga", "hi"),
-                    Td("不", "ふ", "Ja-Fu.oga", "fu"),
-                    Td("部", "へ", romanization="he"),
-                    Td("保", "ほ", romanization="ho"),
+                    Td("波", "は", "", "ha", "は-bw.png"),
+                    Td("比", "ひ", "Ja-Hi.oga", "hi", "ひ-bw.png"),
+                    Td("不", "ふ", "Ja-Fu.oga", "fu", "ふ-bw.png"),
+                    Td("部", "へ", "", "he", "へ-bw.png"),
+                    Td("保", "ほ", "", "ho", "ほ-bw.png"),
                 ],
             ),
             Row(
                 "m",
                 [
-                    Td("末", "ま", romanization="ma"),
-                    Td("美", "み", romanization="mi"),
-                    Td("武", "む", romanization="mu"),
-                    Td("女", "め", romanization="me"),
-                    Td("毛", "も", romanization="mo"),
+                    Td("末", "ま", "", "ma", "ま-bw.png"),
+                    Td("美", "み", "", "mi", "み-bw.png"),
+                    Td("武", "む", "", "mu", "む-bw.png"),
+                    Td("女", "め", "", "me", "め-bw.png"),
+                    Td("毛", "も", "", "mo", "も-bw.png"),
                 ],
             ),
             Row(
                 "y",
                 [
-                    Td("也", "や", romanization="ya"),
+                    Td("也", "や", "", "ya", "や-bw.png"),
                     Td(),
-                    Td("由", "ゆ", romanization="yu"),
+                    Td("由", "ゆ", "", "yu", "ゆ-bw.png"),
                     Td(),
-                    Td("与", "よ", romanization="yo"),
+                    Td("与", "よ", "", "yo", "よ-bw.svg"),
                 ],
             ),
             Row(
                 "r",
                 [
-                    Td("良", "ら", "Ja-Ra.oga", "ra"),
-                    Td("利", "り", "Ja-Ri.oga", "ri"),
-                    Td("留", "る", "Ja-Ru.oga", "ru"),
-                    Td("礼", "れ", "Ja-Re.oga", "re"),
-                    Td("呂", "ろ", "Ja-Ro.oga", "ro"),
+                    Td("良", "ら", "Ja-Ra.oga", "ra", "ら-bw.png"),
+                    Td("利", "り", "Ja-Ri.oga", "ri", "り-bw.png"),
+                    Td("留", "る", "Ja-Ru.oga", "ru", "る-bw.png"),
+                    Td("礼", "れ", "Ja-Re.oga", "re", "れ-bw.png"),
+                    Td("呂", "ろ", "Ja-Ro.oga", "ro", "ろ-bw.png"),
                 ],
             ),
             Row(
                 "w",
                 [
-                    Td("和", "わ", romanization="wa"),
+                    Td("和", "わ", "", "wa", "わ-bw.png"),
                     Td(),
-                    Td("无", "ん", romanization="n"),
+                    Td("无", "ん", "", "n", "ん-bw.png"),
                     Td(),
-                    Td("遠", "を", "Ja-O.oga", "o"),
+                    Td("遠", "を", "Ja-O.oga", "o", "を-bw.png"),
                 ],
             ),
         ]

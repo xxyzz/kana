@@ -21,7 +21,7 @@ jobs:
       - run: |
           python -m pip install -U pip Jinja2 genanki
           python kana.py
-          mv fonts/* *.apkg *.ogg *.oga _site
+          mv fonts/* sounds/* images/*  *.apkg  _site
       - uses: actions/upload-pages-artifact@v3
         if: github.ref_name == 'master'
 
