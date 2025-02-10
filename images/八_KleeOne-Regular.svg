@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="-10 0 1010 1000"
+   id="svg1"
+   sodipodi:docname="uni516B_KleeOne-Regular.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.8"
+     inkscape:cx="505"
+     inkscape:cy="500"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     fill="currentColor"
+     d="M513 168h-5q-25 1 -25 11q0 6 6 9q10 6 16.5 14t13 24t15.5 48q28 95 78.5 206t124 221t168.5 204q5 5 13 5q3 0 14.5 -4.5t22 -11.5t10.5 -14q0 -4 -6 -10q-73 -64 -134.5 -143.5t-110 -164t-82.5 -164t-52 -143.5q-4 -17 -10.5 -33.5t-11.5 -29.5q-4 -11 -11.5 -17.5 t-33.5 -6.5zM404 343v-5q0 -8 -9 -17t-20.5 -15t-20.5 -6q-8 0 -8 9q0 4 0.5 8t0.5 8q0 2 -6 36.5t-22 91.5t-47 128t-81 147.5t-124 149.5q-20 20 -20 33q0 7 8 7q12 0 31 -16q113 -92 193 -225.5t125 -333.5z"
+     id="path1"
+     style="fill:#ff0000" />
+</svg>

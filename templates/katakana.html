@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Hiragana</title>
+    <title>Katakana</title>
     <style>
       @font-face {
         font-family: "hengshancaoshu";
@@ -40,6 +40,10 @@
       img {
 	  max-width: 100%;
       }
+
+      a img {
+          max-width: 1.8rem;
+      }
     </style>
   </head>
   <body>
@@ -59,11 +63,9 @@
 	  {% for td in row.td_list %}
 	  {% if td.chinese != "" %}
 	  <td>
-	    <a href="https://en.wiktionary.org/wiki/{{ td.chinese }}#Japanese">
-	      <span lang="ja">{{ td.chinese }}</span>
-	    </a>
+	    <a href="https://en.wiktionary.org/wiki/{{ td.chinese }}#Japanese"><img src="./{{ td.chinese }}_KleeOne-Regular.svg" /></a>
 	    <span lang="zh">{{ td.chinese }}</span>
-	    <a href="https://en.wiktionary.org/wiki/{{ td.hiragana }}#Japanese">
+	    <a href="https://en.wiktionary.org/wiki/{{ td.kana }}#Japanese">
 	      <span lang="ja">{{ td.kana }}</span>
 	    </a>
 	    {% if td.audio != "" %}
@@ -85,13 +87,13 @@
     </table>
     <ul>
       <li>
-	<a href="./hiragana.apkg">Anki deck</a>
+	<a href="./katakana.apkg">Anki deck</a>
       </li>
       <li>
-	<a href="https://en.wikipedia.org/wiki/Hiragana">Hiragana - Wikipedia</a>
+	<a href="https://en.wikipedia.org/wiki/Katakana">Katakana - Wikipedia</a>
       </li>
       <li>
-	<a href="https://www.nhk.or.jp/lesson/en/letters/hiragana.html">Hiragana - alphabet | Easy Japanese | NHK WORLD-JAPAN</a>
+	<a href="https://www.nhk.or.jp/lesson/en/letters/katakana.html">Katakana - alphabet | Easy Japanese | NHK WORLD-JAPAN</a>
       </li>
     </ul>
   </body>
